@@ -10,8 +10,8 @@ btnLang.addEventListener('click', () => {
 
     toHide.classList.remove('show');
     setTimeout(() => {
-        toHide.classList.remove('active');
-        toShow.classList.add('active');
+        toHide.classList.remove('active'); // Aquí es donde desaparece el espacio
+        toShow.classList.add('active');    // Aquí es donde aparece el nuevo
         document.title = isEs ? "Aron Polanco — Resume" : "Aron Polanco — CV";
         btnLang.textContent = isEs ? "Ver en Español" : "View in English";
         setTimeout(() => toShow.classList.add('show'), 50);
