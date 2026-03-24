@@ -4,50 +4,30 @@ const cvEs = document.getElementById('cv-es');
 const cvEn = document.getElementById('cv-en');
 
 btnLang.addEventListener('click', () => {
-    if (cvEs.classList.contains('active')) {
-        cvEs.classList.remove('show'); 
-        setTimeout(() => {
-            cvEs.classList.remove('active');
-            cvEn.classList.add('active'); 
-            document.title = "Aron Polanco — Resume";
-            setTimeout(() => {
-                cvEn.classList.add('show');
-            }, 50);
-            btnLang.textContent = 'Ver en Español';
-        }, 400);
-    } else {
-        cvEn.classList.remove('show');
-        setTimeout(() => {
-            cvEn.classList.remove('active');
-            cvEs.classList.add('active');
-            document.title = "Aron Polanco — CV";
-            setTimeout(() => {
-                cvEs.classList.add('show');
-            }, 50);
-            btnLang.textContent = 'View in English';
-        }, 400);
-    }
+    const isEs = cvEs.classList.contains('active');
+    const toHide = isEs ? cvEs : cvEn;
+    const toShow = isEs ? cvEn : cvEs;
+
+    toHide.classList.remove('show');
+    setTimeout(() => {
+        toHide.classList.remove('active');
+        toShow.classList.add('active');
+        document.title = isEs ? "Aron Polanco — Resume" : "Aron Polanco — CV";
+        btnLang.textContent = isEs ? "Ver en Español" : "View in English";
+        setTimeout(() => toShow.classList.add('show'), 50);
+    }, 400);
 });
 
 mobileMenuBtn.addEventListener('click', () => {
-    const activeSidebar = document.querySelector('.cv-version.active .sidebar');
-    if (activeSidebar) {
-        activeSidebar.classList.toggle('open');
-        mobileMenuBtn.textContent = activeSidebar.classList.contains('open') ? '✕' : '☰';
+    const sidebar = document.querySelector('.cv-version.active .sidebar');
+    sidebar.classList.toggle('open');
+    mobileMenuBtn.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+});
+
+document.addEventListener('click', (e) => {
+    const sidebar = document.querySelector('.sidebar.open');
+    if (sidebar && !sidebar.contains(e.target) && e.target !== mobileMenuBtn) {
+        sidebar.classList.remove('open');
+        mobileMenuBtn.textContent = '☰';
     }
-});
-
-document.querySelectorAll('.sidebar a').forEach(link => {
-    link.addEventListener('click', () => {
-        const openSidebar = document.querySelector('.sidebar.open');
-        if (openSidebar) {
-            openSidebar.classList.remove('open');
-            mobileMenuBtn.textContent = '☰';
-        }
-    });
-});
-const btnPdf = document.getElementById('btn-pdf');
-
-btnPdf.addEventListener('click', () => {
-    window.print();
 });
