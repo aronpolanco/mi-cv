@@ -20,8 +20,10 @@ btnLang.addEventListener('click', () => {
 
 mobileMenuBtn.addEventListener('click', () => {
     const sidebar = document.querySelector('.cv-version.active .sidebar');
-    sidebar.classList.toggle('open');
-    mobileMenuBtn.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+    if (sidebar) {
+        sidebar.classList.toggle('open');
+        mobileMenuBtn.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+    }
 });
 
 document.addEventListener('click', (e) => {
