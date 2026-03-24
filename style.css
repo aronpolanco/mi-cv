@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -13,63 +9,64 @@ body {
     line-height: 1.6;
 }
 
-/* --- BOTONES FLOTANTES --- */
-.lang-toggle-btn {
+/* --- BOTONES FLOTANTES (ESCRITORIO) --- */
+.controls-container {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 10px 18px;
-    background-color: #0c1622;
-    color: #3498db;
-    border: 2px solid #3498db;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.btn-action {
+    padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 700;
     font-size: 13px;
+    border: none;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    z-index: 1000;
+    transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
 }
 
-.mobile-menu-btn {
-    display: none;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
-    background: #0c1622;
-    color: #3498db;
-    border: 2px solid #3498db;
-    padding: 8px 15px;
-    border-radius: 8px;
+.lang-toggle-btn { background: #0c1622; color: #3498db; border: 2px solid #3498db; }
+.download-btn { background: #e74c3c; color: white; }
+.mobile-menu-btn { 
+    display: none; 
+    background: #3498db; 
+    color: white; 
+    position: fixed; 
+    top: 20px; 
+    left: 20px; 
+    z-index: 1100;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
     font-size: 20px;
-    cursor: pointer;
 }
 
-/* --- CONTENEDORES --- */
+/* --- ESTRUCTURA CV --- */
 .cv-version {
     display: none;
     opacity: 0;
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease;
     max-width: 900px;
     margin: 40px auto;
-    background-color: #fff;
+    background: #fff;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     min-height: 1100px;
 }
 
-.cv-version.active {
-    display: flex;
-}
+.cv-version.active { display: flex; }
+.cv-version.show { opacity: 1; }
 
-.cv-version.show {
-    opacity: 1;
-}
-
-/* --- SIDEBAR --- */
 .sidebar {
     width: 32%;
-    background-color: #0c1622;
+    background: #0c1622;
     color: #ecf0f1;
     padding: 40px 25px;
     display: flex;
@@ -77,163 +74,64 @@ body {
     align-items: center;
 }
 
-.profile-photo-container {
-    width: 140px;
-    height: 140px;
-    margin-bottom: 30px;
-}
-
 .profile-photo {
-    width: 100%;
-    height: 100%;
+    width: 140px; height: 140px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid #fff;
+    margin-bottom: 30px;
 }
 
 .sidebar h2 {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    color: #3498db;
-    border-bottom: 1px solid #34495e;
-    padding-bottom: 5px;
-    width: 100%;
-    margin-top: 25px;
+    font-size: 14px; color: #3498db;
+    text-transform: uppercase; border-bottom: 1px solid #34495e;
+    width: 100%; margin-top: 25px; padding-bottom: 5px;
 }
 
-.sidebar h2:first-of-type { margin-top: 0; }
-
-.contact-info { width: 100%; }
-.contact-info p { font-size: 12.5px; margin-bottom: 12px; }
+.contact-info, .skills-list { width: 100%; font-size: 13px; list-style: none; }
+.contact-info p, .skills-list li { margin-bottom: 12px; }
 .contact-info a { color: #ecf0f1; text-decoration: none; }
 
-.skills-list { list-style: none; width: 100%; }
-.skills-list li { font-size: 13px; margin-bottom: 12px; }
-.skills-list strong { display: block; color: #fff; font-weight: 500; }
-
-/* --- CONTENIDO PRINCIPAL --- */
-.main-content {
-    width: 68%;
-    padding: 40px;
-}
-
-.header h1 { font-size: 32px; color: #2c3e50; margin-bottom: 5px; }
-.header h3 { font-size: 16px; color: #3498db; margin-bottom: 20px; font-weight: 400; }
-
-.profile-summary { font-size: 13.5px; color: #555; text-align: justify; margin-bottom: 30px; }
-
+.main-content { width: 68%; padding: 40px; }
+.header h1 { font-size: 32px; color: #2c3e50; }
+.header h3 { color: #3498db; margin-bottom: 20px; }
 .section-title {
-    font-size: 18px;
-    color: #2c3e50;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-    margin-top: 30px;
-    text-transform: uppercase;
+    font-size: 18px; border-bottom: 2px solid #e2e8f0;
+    margin: 30px 0 20px; text-transform: uppercase;
 }
-
 .job-entry { margin-bottom: 20px; }
-.job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
-.job-title { font-weight: 700; font-size: 15px; }
-.company { color: #7f8c8d; font-size: 14px; }
-.job-date { font-size: 12px; color: #888; }
+.job-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; }
 
-.job-tasks { list-style-type: disc; margin-left: 20px; font-size: 13px; color: #555; }
-
-.project-entry { margin-bottom: 15px; }
-.project-title { font-weight: 700; font-size: 14px; }
-.project-link { font-size: 12px; color: #3498db; text-decoration: none; }
-
-/* --- MEDIA QUERIES (MÓVIL) --- */
+/* --- RESPONSIVE MÓVIL --- */
 @media (max-width: 768px) {
-    .mobile-menu-btn { display: block; }
-
-    .cv-version.active {
-        flex-direction: column;
-        margin: 0;
+    .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+    
+    .controls-container {
+        top: 15px; right: 10px; gap: 5px;
     }
+    
+    .btn-action { padding: 8px 10px; font-size: 11px; }
+
+    .cv-version.active { flex-direction: column; }
 
     .sidebar {
-        width: 280px;
-        position: fixed;
-        left: -280px;
-        top: 0;
-        height: 100%;
-        z-index: 999;
-        transition: 0.3s;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+        position: fixed; left: -100%; top: 0;
+        width: 80%; height: 100vh;
+        z-index: 1050; transition: 0.3s;
+        overflow-y: auto;
     }
-
     .sidebar.open { left: 0; }
 
-    .main-content {
-        width: 100%;
-        padding: 80px 20px 20px 20px;
+    .main-content { 
+        width: 100%; 
+        padding: 100px 20px 20px; /* Espacio para que no se encime con botones */
     }
 
     .header h1 { font-size: 26px; }
-    
-    .job-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .job-date { margin-top: 5px; }
 }
 
 @media print {
-    .lang-toggle-btn, .mobile-menu-btn { display: none; }
-    body { background-color: #fff; }
+    .controls-container, .mobile-menu-btn { display: none; }
+    body { background: white; }
     .cv-version { margin: 0; box-shadow: none; display: flex !important; opacity: 1 !important; }
-}
-/* Estilo del botón de PDF */
-.pdf-btn {
-    position: fixed;
-    top: 70px; /* Debajo del botón de idioma */
-    right: 20px;
-    padding: 10px 18px;
-    background-color: #e74c3c; /* Rojo para que resalte como PDF */
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 13px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    z-index: 1000;
-}
-
-.pdf-btn:hover {
-    background-color: #c0392b;
-}
-
-/* --- MAGIA PARA EL PDF (Solo al imprimir) --- */
-@media print {
-    /* Ocultamos los botones y el menú hamburguesa */
-    .lang-toggle-btn, .pdf-btn, .mobile-menu-btn {
-        display: none !important;
-    }
-
-    body {
-        background-color: white;
-        padding: 0;
-        margin: 0;
-    }
-
-    .cv-version {
-        margin: 0;
-        box-shadow: none;
-        width: 100%;
-        display: flex !important; /* Forzamos que se vea la versión activa */
-        opacity: 1 !important;
-    }
-
-    /* Aseguramos que los colores de fondo se impriman */
-    .sidebar {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
 }
