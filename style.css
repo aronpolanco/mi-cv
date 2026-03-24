@@ -150,3 +150,52 @@ body {
     body { background-color: #fff; padding: 0; }
     .cv-version { margin: 0; box-shadow: none; width: 100%; max-width: 100%; }
 }
+/* --- ESTILOS PARA MÓVIL (Media Queries) --- */
+.mobile-menu-btn {
+    display: none; /* Oculto en PC */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn { display: block; } /* Aparece en móvil */
+
+    .cv-version.active {
+        flex-direction: column; /* Las columnas se apilan una arriba de otra */
+    }
+
+    .sidebar {
+        width: 100%;
+        position: fixed;
+        left: -100%; /* Escondida a la izquierda */
+        top: 0;
+        height: 100%;
+        z-index: 999;
+        transition: 0.3s;
+        overflow-y: auto;
+    }
+
+    .sidebar.open {
+        left: 0; /* Aparece cuando tiene la clase .open */
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 80px 20px 20px 20px; /* Espacio para que el botón no tape el nombre */
+    }
+
+    .lang-toggle-btn {
+        top: 20px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
