@@ -92,3 +92,14 @@ body {
     .controls-container, .mobile-menu-btn { display: none; }
     .cv-version { margin: 0; display: flex !important; opacity: 1 !important; box-shadow: none; width: 100%; }
 }
+/* --- AJUSTE PARA DESCARGA DE PDF --- */
+@media print, .cv-version {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* Evita que los bloques de trabajo se corten feo entre páginas */
+.job-entry {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
