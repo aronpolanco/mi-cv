@@ -33,3 +33,22 @@ document.addEventListener('click', (e) => {
         mobileMenuBtn.textContent = '☰';
     }
 });
+document.getElementById('download-btn').addEventListener('click', () => {
+    const element = document.querySelector('.cv-version.active');
+    const isEs = document.getElementById('cv-es').classList.contains('active');
+    const fileName = isEs ? 'CV_Aron_Polanco.pdf' : 'Resume_Aron_Polanco.pdf';
+
+    const opt = {
+        margin: 0,
+        filename: fileName,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+            scale: 2, 
+            useCORS: true, 
+            letterRendering: true 
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
+});
