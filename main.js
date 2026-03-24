@@ -46,3 +46,8 @@ document.querySelectorAll('.sidebar a').forEach(link => {
         }
     });
 });
+const btnPdf = document.getElementById('btn-pdf');
+
+btnPdf.addEventListener('click', () => {
+    window.print();
+});
