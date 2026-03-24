@@ -35,3 +35,22 @@ btnLang.addEventListener('click', () => {
         }, 400);
     }
 });
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+// Función para abrir/cerrar menú en móvil
+mobileMenuBtn.addEventListener('click', () => {
+    // Buscamos la versión que esté activa (es o en)
+    const activeSidebar = document.querySelector('.cv-version.active .sidebar');
+    activeSidebar.classList.toggle('open');
+    
+    // Cambiamos el icono de hamburguesa por una X
+    mobileMenuBtn.textContent = activeSidebar.classList.contains('open') ? '✕' : '☰';
+});
+
+// Cerrar menú al hacer clic en un enlace (opcional)
+document.querySelectorAll('.sidebar a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.sidebar.open')?.classList.remove('open');
+        mobileMenuBtn.textContent = '☰';
+    });
+});
