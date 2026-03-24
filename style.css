@@ -188,3 +188,52 @@ body {
     body { background-color: #fff; }
     .cv-version { margin: 0; box-shadow: none; display: flex !important; opacity: 1 !important; }
 }
+/* Estilo del botón de PDF */
+.pdf-btn {
+    position: fixed;
+    top: 70px; /* Debajo del botón de idioma */
+    right: 20px;
+    padding: 10px 18px;
+    background-color: #e74c3c; /* Rojo para que resalte como PDF */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.pdf-btn:hover {
+    background-color: #c0392b;
+}
+
+/* --- MAGIA PARA EL PDF (Solo al imprimir) --- */
+@media print {
+    /* Ocultamos los botones y el menú hamburguesa */
+    .lang-toggle-btn, .pdf-btn, .mobile-menu-btn {
+        display: none !important;
+    }
+
+    body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+    }
+
+    .cv-version {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        display: flex !important; /* Forzamos que se vea la versión activa */
+        opacity: 1 !important;
+    }
+
+    /* Aseguramos que los colores de fondo se impriman */
+    .sidebar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
