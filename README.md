@@ -15,6 +15,6 @@ https://aronpolanco.github.io/mi-cv/
 Soy un Ingeniero en Sistemas en formación con sólida experiencia en infraestructura tecnológica, distribución digital B2B/B2C y administración de plataformas. Actualmente busco aplicar mis habilidades analíticas y técnicas en roles como **Technical Support Engineer, Implementation Specialist, QA Manual o Junior Dev**.
 
 ## Contacto
-* **LinkedIn:** [linkedin.com/in/arom-polanco](https://linkedin.com/in/aron-polanco)
-* **GitHub:** [github.com/arompolanco](https://github.com/aronpolanco)
+* **LinkedIn:** [linkedin.com/in/aron-polanco](https://linkedin.com/in/aron-polanco)
+* **GitHub:** [github.com/aronpolanco](https://github.com/aronpolanco)
 * **Email:** aronpolanco@gmail.com
